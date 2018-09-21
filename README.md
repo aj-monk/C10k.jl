@@ -11,7 +11,7 @@ run the popular C10k test to see how a Julia based web server
 handles 10k simultaneous connections.
 
 No attempt is made to tune any of the alternatives. The goal is to
-see how a solution that's quickly put together will perform.
+see how a solution that is quickly put together will perform.
 
 ## The Contenders
 
@@ -81,7 +81,7 @@ julia> using Logging; global_logger(NullLogger()) # Turn off logging
 
 ## Results
 
-![Benchmark results](/results/C10k.png)
+![Benchmark results](/aj-monk/C10k.jl/blob/master/C10k.png)
 
 ## OS Settings
 ```bash
