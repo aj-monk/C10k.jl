@@ -1,6 +1,6 @@
 # C10k
 
-*Evaluation of HTTP.jl Julia package for 10k concurrent connections*
+*Evaluation of a Julia web server for 10k concurrent connections*
 
 ## Introduction
 While the [Julia](https://julialang.org) language is popular for
@@ -20,7 +20,7 @@ see how a solution that's quickly put together will perform.
 2. [HTTP.jl](https://github.com/JuliaWeb/HTTP.jl) v0.6.14
 
 ### Apache
-1. Server version: Apache/2.4.29 (Ubuntu)
+1. Server version: [Apache](https://httpd.apache.org)/2.4.29 (Ubuntu)
 2. Server built:   2018-06-27T17:05:04
 
 ### Node.js based http-server
@@ -30,15 +30,15 @@ see how a solution that's quickly put together will perform.
 ## Environment
 
 ### Hardware
-1. CPU: Intel(R) Core(TM) [i7-7500U](https://ark.intel.com/products/95451/Intel-Core-i7-7500U-Processor-4M-Cache-up-to-3_50-GHz-) CPU @ 2.70GHz
-2. Memory: 16 Gb
+1. CPU: [Intel(R) Core(TM) i7-7500U](https://ark.intel.com/products/95451/Intel-Core-i7-7500U-Processor-4M-Cache-up-to-3_50-GHz-) CPU @ 2.70GHz
+2. System Memory: 16 GB
 2. Storage: PCIe NVMe Toshiba 512gb SSD
 
 ### OS
 Linux xyxy 4.15.0-33-generic #36-Ubuntu SMP Wed Aug 15 16:00:05 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 
 ## Benchmark
-[ab](https://httpd.apache.org/docs/2.2/programs/ab.html) - Apache HTTP server benchmarking tool
+[ab - Apache HTTP server benchmarking tool](https://httpd.apache.org/docs/2.2/programs/ab.html)
 
 ```bash
 bash$ ab -n 13000 -c 10000 -g test.csv http://localhost:8080/index.html
@@ -81,18 +81,20 @@ julia> using Logging; global_logger(NullLogger()) # Turn off logging
 
 ## Results
 
+![Benchmark results](/results/C10k.png)
 
 ## OS Settings
 ```bash
-sysctl net.ipv4.ip_local_port_range="15000	61000"
-sysctl net.ipv4.tcp_fin_timeout=20
-sysctl net.ipv4.tcp_tw_recycle=1
-sysctl net.ipv4.tcp_tw_reuse=1
+bash$ sysctl net.ipv4.ip_local_port_range="15000	61000"
+bash$ sysctl net.ipv4.tcp_fin_timeout=20
+bash$ sysctl net.ipv4.tcp_tw_recycle=1
+bash$ sysctl net.ipv4.tcp_tw_reuse=1
 ```
 
 Increase the user's ulimit in /etc/security/limits.conf like so.
-user1        hard    nofile      100000
-user1        soft    nofile      100000
+
+    user1        hard    nofile      100000
+    user1        soft    nofile      100000
 
 Set the user's ulimit in the shell before running the client or server.
 ```bash
