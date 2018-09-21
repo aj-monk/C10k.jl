@@ -1,0 +1,42 @@
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        ecstatic-2.2.1
+Server Hostname:        localhost
+Server Port:            8081
+
+Document Path:          /index.html
+Document Length:        10831 bytes
+
+Concurrency Level:      10000
+Time taken for tests:   3.183 seconds
+Complete requests:      13000
+Failed requests:        0
+Total transferred:      144547000 bytes
+HTML transferred:       140803000 bytes
+Requests per second:    4084.28 [#/sec] (mean)
+Time per request:       2448.412 [ms] (mean)
+Time per request:       0.245 [ms] (mean, across all concurrent requests)
+Transfer rate:          44348.75 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0  362 473.6     19    1052
+Processing:   264  470 181.3    382    1023
+Waiting:      143  327 156.8    261     935
+Total:        267  832 598.5    610    2059
+
+Percentage of the requests served within a certain time (ms)
+  50%    610
+  66%    737
+  75%   1458
+  80%   1632
+  90%   1701
+  95%   1898
+  98%   1945
+  99%   1952
+ 100%   2059 (longest request)

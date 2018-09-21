@@ -1,0 +1,6 @@
+[deps]
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
+Memento = "f28f55f0-a522-5efc-85c2-fe41dfb9b2d9"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+Sockets = "6462fe0b-24de-5631-8697-dd941f90decc"
