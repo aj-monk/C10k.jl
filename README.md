@@ -81,7 +81,7 @@ julia> using Logging; global_logger(NullLogger()) # Turn off logging
 
 ## Results
 
-![Benchmark results](/aj-monk/C10k.jl/blob/master/C10k.png)
+![Benchmark results](/C10k.png)
 
 ## OS Settings
 ```bash
