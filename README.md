@@ -83,6 +83,22 @@ julia> using Logging; global_logger(NullLogger()) # Turn off logging
 
 ![Benchmark results](/C10k.png)
 
+* For upto 6.8K simultaneous connections Julia performs 6 times better (in latency
+per request) than nodejs, roughly equivalent to the native C performance of
+Apache.
+* Beyond 6.8K connections Julia's performance steadily degrades.
+* Nodejs performance degrades more gradually after 6.8K connections.
+* The worst case Latency of the Julia server is 6.7 seconds.
+* Apache performs very badly on the last connection (possibly last close).
+
+## Conclusions
+An HTTP file server in Julia quickly put together with HTTP.jl performs well
+upto about 5K simultaneous connections.
+
+More tests need to be run for heavier workloads that exercise the CPU or
+memory. And the degradation of performance beyond 6.8K connections needs
+to be studied.
+
 ## OS Settings
 ```bash
 bash$ sysctl net.ipv4.ip_local_port_range="15000	61000"
